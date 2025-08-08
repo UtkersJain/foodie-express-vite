@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  # Simple PostgreSQL setup
+  postgres:
+    image: postgres:15-alpine
+    container_name: foodie_postgres_simple
+    environment:
+      POSTGRES_DB: foodie_express
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_simple_data:/var/lib/postgresql/data
+    command: postgres -c log_statement=all
+
+volumes:
+  postgres_simple_data:
